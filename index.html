@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="caixa pequena">
+        <h1>Biblioteca</h1>
+        <h2>Entrar no sistema</h2>
+
+        <div 
+            id="erro" 
+            class="erro" 
+            hidden
+        >
+            E-mail ou senha inválidos
+        </div>
+
+        <form method="POST" action="login.php">
+
+            <label>E-mail</label>
+            <input 
+                type="email" 
+                name="email" 
+                required
+            >
+
+            <label>Senha</label>
+            <input 
+                type="password" 
+                name="senha" 
+                required
+            >
+
+            <button type="submit">
+                Entrar
+            </button>
+        </form>
+    </main>
+    <script>
+        if (new URLSearchParams(location.search).has('erro')) {
+            document.getElementById('erro').hidden = false;
+        }
+    </script>
+</body>
+
+</html>

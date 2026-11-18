@@ -1,0 +1,57 @@
+Para login
+
+admin@biblioteca.com
+Biblioteca123
+
+
+
+
+
+
+
+
+
+
+CREATE DATABASE mini_sistema;
+
+USE mini_sistema;
+
+CREATE TABLE bibliotecarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefone VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE livros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(200) NOT NULL,
+    autor VARCHAR(150) NOT NULL,
+    editora VARCHAR(100),
+    isbn VARCHAR(20) UNIQUE,
+    genero VARCHAR(80) NOT NULL,
+    ano_publicacao INT,
+    quantidade_exemplares INT NOT NULL
+);
+
+CREATE TABLE emprestimos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    id_livro INT NOT NULL,
+    data_emprestimo DATE NOT NULL,
+    prazo_devolucao DATE NOT NULL,
+    data_devolucao DATE DEFAULT NULL,
+
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+    FOREIGN KEY (id_livro) REFERENCES livros(id)
+);
+
+INSERT INTO bibliotecarios (nome, email, senha)
+VALUES ('Bibliotecário', 'admin@biblioteca.com', '$2y$12$lBnEMcmjInVxMZkqwdbC9e7Huy4KTtXfPjdpTroE/R1FO9KXcRtlC');
